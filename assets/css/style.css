@@ -247,8 +247,9 @@ p {
 }
 
 .nav-logo img {
-    height: 120px;
-    width: auto;
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
     filter: drop-shadow(0 3px 12px var(--shadow-gold)) contrast(1.2) brightness(1.1);
 }
 
