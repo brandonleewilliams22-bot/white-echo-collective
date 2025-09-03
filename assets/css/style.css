@@ -211,16 +211,7 @@ p {
 
 /* Header */
 .main-header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-bottom: none;
-    transition: all 0.4s ease;
-    box-shadow: none;
+    display: none;
 }
 
 .main-header.scrolled {
@@ -307,8 +298,6 @@ p {
     color: var(--black);
     position: relative;
     overflow: hidden;
-    margin-top: -100px;
-    padding-top: 100px;
 }
 
 .hero::before {
