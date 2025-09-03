@@ -1,9 +1,25 @@
-// Enhanced smooth scrolling and urban transitions
+// Enhanced smooth scrolling with stripe transitions
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Create stripe transition element
+    const stripeTransition = document.createElement('div');
+    stripeTransition.className = 'stripe-transition';
+    document.body.appendChild(stripeTransition);
+
+    // Stripe transition function
+    function triggerStripeTransition(callback) {
+        stripeTransition.classList.add('active');
+        setTimeout(() => {
+            if (callback) callback();
+            setTimeout(() => {
+                stripeTransition.classList.remove('active');
+            }, 400);
+        }, 400);
+    }
+
     // Smooth scroll animation observer
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.15,
         rootMargin: '0px 0px -50px 0px'
     };
 
@@ -20,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Enhanced mobile navigation with smooth transitions
+    // Enhanced mobile navigation
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -28,24 +44,39 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
-        
-        // Add stagger animation to nav items
-        if (navMenu.classList.contains('active')) {
-            navLinks.forEach((link, index) => {
-                link.style.animationDelay = `${index * 0.1}s`;
-            });
-        }
     });
 
-    // Close mobile menu when clicking on a link
+    // Navigation with stripe transitions
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            // Only apply stripe transition for internal links
+            if (href.startsWith('#') || href.includes('.html')) {
+                e.preventDefault();
+                
+                triggerStripeTransition(() => {
+                    if (href.startsWith('#')) {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    } else {
+                        window.location.href = href;
+                    }
+                });
+            }
+            
+            // Close mobile menu
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         });
     });
 
-    // Enhanced back to top button with smooth scroll
+    // Enhanced back to top button
     const backToTopButton = document.getElementById('back-to-top');
     
     window.addEventListener('scroll', () => {
@@ -55,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
             backToTopButton.classList.remove('visible');
         }
         
-        // Add scrolled class to header for enhanced styling
+        // Add scrolled class to header
         const header = document.querySelector('.main-header');
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
@@ -66,9 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        triggerStripeTransition(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     });
 
@@ -79,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const placeholders = [
             'Street Art Mural',
-            'Graffiti Design',
+            'Graffiti Design', 
             'Urban Photography',
             'City Landscape',
             'Industrial Art',
@@ -88,12 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         placeholders.forEach(title => {
             const placeholder = document.createElement('div');
-            placeholder.className = 'urban-art-container urban-art-placeholder animate-on-scroll';
+            placeholder.className = 'urban-art-placeholder animate-on-scroll gold-shine';
             placeholder.innerHTML = `
-                <div class="urban-art-overlay">${title}</div>
-                <div style="padding: 2rem; text-align: center;">
-                    <p>Urban Art Space</p>
-                    <small>${title}</small>
+                <div style="text-align: center;">
+                    <p style="margin: 0; font-size: 0.9rem;">${title}</p>
                 </div>
             `;
             gallery.appendChild(placeholder);
@@ -101,101 +132,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced button hover effects
+    // Enhanced button interactions
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.05)';
+            this.style.transform = 'translateY(-3px)';
         });
         
         btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            this.style.transform = 'translateY(0)';
         });
     });
 
     // Service card enhanced interactions
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.02)';
-            
-            // Add subtle rotation to icon
             const icon = this.querySelector('.service-icon');
             if (icon) {
-                icon.style.transform = 'scale(1.2) rotate(10deg)';
+                icon.style.transform = 'scale(1.1)';
             }
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            
             const icon = this.querySelector('.service-icon');
             if (icon) {
-                icon.style.transform = 'scale(1) rotate(0deg)';
+                icon.style.transform = 'scale(1)';
             }
         });
     });
 
-    // Parallax effect for hero section
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
-        }
-    });
-
-    // Enhanced text glow animation
-    function addTextGlowEffect() {
-        const titles = document.querySelectorAll('h1, h2');
-        titles.forEach(title => {
-            title.addEventListener('mouseenter', function() {
-                this.style.textShadow = '0 0 50px rgba(255, 107, 53, 0.8), 0 0 70px rgba(0, 212, 255, 0.3)';
-            });
-            
-            title.addEventListener('mouseleave', function() {
-                this.style.textShadow = '0 0 30px rgba(255, 107, 53, 0.5)';
-            });
+    // Gold shine effect for elements
+    document.querySelectorAll('.gold-shine').forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const shine = this.querySelector('::before');
+            if (shine) {
+                shine.style.left = '100%';
+            }
         });
-    }
+    });
 
     // Initialize urban art gallery
     createUrbanArtPlaceholders();
-    
-    // Initialize text glow effects
-    addTextGlowEffect();
 
-    // Smooth page transitions
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Add loading animation
+    // Smooth page load animation
     window.addEventListener('load', () => {
         document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.transition = 'opacity 0.3s ease';
         
         setTimeout(() => {
             document.body.style.opacity = '1';
-        }, 100);
+        }, 50);
     });
 
-    // Enhanced cursor effects for interactive elements
-    document.querySelectorAll('.btn, .service-card, .feature-item, .nav-link').forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            document.body.style.cursor = 'pointer';
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            document.body.style.cursor = 'default';
+    // Enhanced scroll animations with stagger
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    animatedElements.forEach((element, index) => {
+        element.style.transitionDelay = `${index * 0.1}s`;
+    });
+
+    // Page transition for external links
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            
+            triggerStripeTransition(() => {
+                window.location.href = href;
+            });
         });
     });
 });
