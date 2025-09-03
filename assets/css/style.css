@@ -233,7 +233,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 0.8rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -247,8 +247,8 @@ p {
 }
 
 .nav-logo img {
-    height: 250px;
-    width: 250px;
+    height: 80px;
+    width: 80px;
     object-fit: contain;
     filter: drop-shadow(0 3px 12px var(--shadow-gold)) contrast(1.2) brightness(1.1);
     position: relative;
@@ -307,8 +307,8 @@ p {
     color: var(--black);
     position: relative;
     overflow: hidden;
-    margin-top: -80px;
-    padding-top: 80px;
+    margin-top: -60px;
+    padding-top: 60px;
 }
 
 .hero::before {
