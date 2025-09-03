@@ -173,17 +173,45 @@
             </div>
         </section>
 
+        <!-- Weekly Insights Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>Weekly Brand Insights</h2>
+                    <p>Every Wednesday, we share curated insights and original commentary on the latest brand strategy trends.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="insight-source animate-on-scroll">
+                        <h4>The Branding Journal</h4>
+                        <p>Latest insights on brand strategy and identity design trends.</p>
+                        <a href="https://www.thebrandingjournal.com/" target="_blank" class="source-link">Visit Source →</a>
+                    </div>
+                    <div class="insight-source animate-on-scroll">
+                        <h4>Harvard Business School</h4>
+                        <p>Strategic business insights and marketing research findings.</p>
+                        <a href="https://online.hbs.edu/blog/" target="_blank" class="source-link">Visit Source →</a>
+                    </div>
+                    <div class="insight-source animate-on-scroll">
+                        <h4>Branding Strategy Insider</h4>
+                        <p>Expert analysis on branding strategies and market positioning.</p>
+                        <a href="https://brandingstrategyinsider.com/" target="_blank" class="source-link">Visit Source →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Newsletter Signup -->
         <section class="content-section">
             <div class="container">
                 <div class="newsletter-section animate-on-scroll">
                     <div class="newsletter-content">
-                        <h2>Stay Informed</h2>
-                        <p>Receive strategic insights and practical guidance delivered directly to your inbox. No spam, just valuable content to help transform your brand.</p>
+                        <h2>Weekly Wednesday Updates</h2>
+                        <p>Get our curated insights and original commentary delivered every Wednesday. We analyze the latest trends and provide actionable strategies for your brand.</p>
                         <form class="newsletter-form">
                             <input type="email" placeholder="Enter your email address" required>
-                            <button type="submit" class="btn gold-texture">Subscribe</button>
+                            <button type="submit" class="btn gold-texture">Subscribe to Weekly Insights</button>
                         </form>
+                        <p class="newsletter-note">Join our community for weekly brand strategy insights and exclusive content.</p>
                     </div>
                 </div>
             </div>
@@ -361,13 +389,60 @@
     transform: translateX(5px);
 }
 
+/* Insight Sources */
+.insight-source {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.4s ease;
+}
+
+.insight-source:hover {
+    transform: translateY(-5px);
+    border-color: var(--dirty-gold);
+    box-shadow: 0 10px 30px var(--shadow-light);
+}
+
+.insight-source h4 {
+    color: var(--dirty-gold);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.insight-source p {
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.source-link {
+    color: var(--dirty-gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.source-link:hover {
+    color: var(--dirty-gold-dark);
+}
+
 /* Newsletter Section */
 .newsletter-section {
-    background: linear-gradient(145deg, var(--charcoal-light), var(--charcoal));
+    background: var(--light-gray);
     padding: 4rem 3rem;
     border-radius: 12px;
     text-align: center;
     border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.newsletter-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    font-style: italic;
 }
 
 .newsletter-content h2 {
@@ -377,7 +452,7 @@
 .newsletter-content p {
     max-width: 600px;
     margin: 0 auto 2rem;
-    color: var(--cream);
+    color: var(--dark-gray);
 }
 
 .newsletter-form {
