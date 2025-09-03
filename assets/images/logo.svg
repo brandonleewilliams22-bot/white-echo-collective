@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" width="320" height="70">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
   <defs>
-    <linearGradient id="ngeticGold" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="plasterGold" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
       <stop offset="50%" style="stop-color:#e6c547;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#b8941f;stop-opacity:1" />
     </linearGradient>
-    <filter id="ngeticGlow">
+    <filter id="textGlow">
       <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
       <feMerge> 
         <feMergeNode in="coloredBlur"/>
@@ -14,18 +14,9 @@
     </filter>
   </defs>
   
-  <!-- Ngetic-style geometric element -->
-  <g transform="translate(15, 35)">
-    <polygon points="0,-15 12,-8 12,8 0,15 -12,8 -12,-8" fill="none" stroke="url(#ngeticGold)" stroke-width="2.5" opacity="0.9"/>
-    <circle cx="0" cy="0" r="4" fill="url(#ngeticGold)" opacity="0.8"/>
-  </g>
+  <!-- WHITE ECHO in Plaster font -->
+  <text x="150" y="35" font-family="Plaster, serif" font-size="28" font-weight="400" fill="url(#plasterGold)" filter="url(#textGlow)" text-anchor="middle" letter-spacing="2px">WHITE ECHO</text>
   
-  <!-- Main text with Ngetic-inspired styling -->
-  <text x="50" y="30" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="url(#ngeticGold)" filter="url(#ngeticGlow)" letter-spacing="3px" style="text-transform: uppercase;">WHITE</text>
-  <text x="50" y="48" font-family="Arial, sans-serif" font-size="11" font-weight="500" fill="#faf8f3" letter-spacing="4px" opacity="0.85" style="text-transform: uppercase;">ECHO COLLECTIVE</text>
-  
-  <!-- Ngetic-style accent elements -->
-  <line x1="45" y1="55" x2="290" y2="55" stroke="url(#ngeticGold)" stroke-width="1.5" opacity="0.7"/>
-  <circle cx="295" cy="35" r="2" fill="url(#ngeticGold)" opacity="0.9"/>
-  <circle cx="305" cy="35" r="1.5" fill="url(#ngeticGold)" opacity="0.7"/>
+  <!-- COLLECTIVE in Herr Von Muellerhoff font -->
+  <text x="150" y="60" font-family="Herr Von Muellerhoff, cursive" font-size="18" font-weight="400" fill="url(#plasterGold)" text-anchor="middle" letter-spacing="1px" opacity="0.9">COLLECTIVE</text>
 </svg>
