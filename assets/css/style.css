@@ -340,6 +340,17 @@ p {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
+/* Home page specific hero title */
+body:has([href="index.html"].nav-link.active) .hero h1,
+.hero h1:contains("Forge Your Brand from the Ground Up") {
+    color: white;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: white;
+    background-clip: unset;
+    text-shadow: 3px 3px 8px rgba(212, 175, 55, 0.8), 1px 1px 4px rgba(212, 175, 55, 0.9), 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
 .hero p {
     font-size: 1.3rem;
     margin-bottom: 3rem;
