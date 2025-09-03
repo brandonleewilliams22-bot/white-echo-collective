@@ -247,8 +247,8 @@ p {
 }
 
 .nav-logo img {
-    height: 80px;
-    width: 80px;
+    height: 250px;
+    width: 250px;
     object-fit: contain;
     filter: drop-shadow(0 3px 12px var(--shadow-gold)) contrast(1.2) brightness(1.1);
     position: relative;
