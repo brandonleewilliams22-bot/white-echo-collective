@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - White Echo Collective</title>
+    <link rel="canonical" href="https://white-echo-collective.com/contact">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,12 +18,12 @@
                 <img src="assets/images/logo.svg" alt="White Echo Collective Logo">
             </a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -33,50 +34,280 @@
     </header>
 
     <main>
-        <section class="page-hero" style="background-image: url('assets/images/contact-hero.jpg');">
-            <div class="hero-content animate-on-scroll">
-                <h1>Let's Create Together.</h1>
-                <p>Ready to awaken your brand's identity? We're here to help.</p>
+        <!-- Hero Section -->
+        <section class="hero" style="background-image: url('assets/images/contact-hero.jpg');">
+            <div class="hero-content">
+                <h1>Let's Create Something Extraordinary.</h1>
+                <p class="lead">Ready to transform your brand's potential into refined excellence? We're here to guide your journey.</p>
             </div>
         </section>
 
-        <section class="container section-padding">
-            <div class="contact-grid">
-                <div class="contact-form-wrapper animate-on-scroll">
-                    <h2>Send Us a Message</h2>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+        <!-- Contact Introduction -->
+        <section class="content-section">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="animate-on-scroll">
+                        <h2>Start Your Transformation</h2>
+                        <p>Every great brand begins with a conversation. Whether you're launching a new venture or refining an existing brand, we're here to help you uncover and amplify your authentic potential.</p>
+                        <p>Our collaborative approach ensures that your vision remains at the heart of everything we create, while our expertise guides you toward solutions that drive real results.</p>
+                    </div>
+                    <div class="image-container animate-on-scroll">
+                        <img src="assets/images/blog-2.jpg" alt="Brand consultation and strategy" loading="lazy">
+                        <div class="image-overlay">
+                            <p>Strategic brand consultation</p>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">How can we help?</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-                    </form>
-                </div>
-                <div class="contact-details animate-on-scroll">
-                    <h2>Contact Details</h2>
-                    <p>Reach out directly or book a free consultation to discuss your project.</p>
-                    <p><strong>Email:</strong> <a href="mailto:brandonleewilliams22@gmail.com">brandonleewilliams22@gmail.com</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:+27621921348">+27 62 192 1348</a></p>
-                    <a href="https://scheduler.zoom.us/brandon-lee-williams/white-echo-collective-brand-strategy-discussion" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Book a Free Consultation</a>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Form Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="animate-on-scroll">
+                        <h2>Send Us a Message</h2>
+                        <p>Tell us about your project, goals, and vision. We'll respond within 24 hours with insights and next steps.</p>
+                        
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="project-type">Project Type</label>
+                                <select id="project-type" name="project-type" required>
+                                    <option value="">Select a service</option>
+                                    <option value="branding">Brand Identity & Design</option>
+                                    <option value="web-design">Web Design & Development</option>
+                                    <option value="social-media">Social Media Marketing</option>
+                                    <option value="content">Content Strategy & Creation</option>
+                                    <option value="seo">SEO & Digital Marketing</option>
+                                    <option value="consultation">Strategic Consultation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Project Budget</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-5k">Under $5,000</option>
+                                    <option value="5k-10k">$5,000 - $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-plus">$25,000+</option>
+                                    <option value="discuss">Let's discuss</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Project Details</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Tell us about your project, goals, and vision..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn gold-texture">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="animate-on-scroll">
+                        <div class="contact-info-card">
+                            <h3>Get In Touch</h3>
+                            <p>Ready to discuss your project? Reach out directly or schedule a consultation to explore how we can help transform your brand.</p>
+                            
+                            <div class="contact-method">
+                                <h4>Email</h4>
+                                <p><a href="mailto:brandonleewilliams22@gmail.com">brandonleewilliams22@gmail.com</a></p>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+27621921348">+27 62 192 1348</a></p>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <h4>Response Time</h4>
+                                <p>We typically respond within 24 hours during business days.</p>
+                            </div>
+                            
+                            <a href="https://scheduler.zoom.us/brandon-lee-williams/white-echo-collective-brand-strategy-discussion" target="_blank" rel="noopener noreferrer" class="btn btn-secondary gold-texture">Schedule Free Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>What Happens Next?</h2>
+                    <p>Our streamlined process ensures you get the clarity and direction you need to move forward confidently.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card animate-on-scroll">
+                        <div class="card-icon">💬</div>
+                        <h3>Initial Consultation</h3>
+                        <p>We'll discuss your goals, challenges, and vision to understand how we can best support your brand transformation.</p>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <div class="card-icon">📋</div>
+                        <h3>Strategic Proposal</h3>
+                        <p>Based on our conversation, we'll create a detailed proposal outlining our recommended approach, timeline, and investment.</p>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <div class="card-icon">🚀</div>
+                        <h3>Project Launch</h3>
+                        <p>Once aligned, we'll begin the transformation process, keeping you informed and involved every step of the way.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Quick answers to common questions about working with White Echo Collective.</p>
+                </div>
+                <div class="grid-2">
+                    <div class="animate-on-scroll">
+                        <h4>How long do projects typically take?</h4>
+                        <p>Project timelines vary based on scope and complexity. Brand identity projects typically take 4-6 weeks, while comprehensive website development can take 8-12 weeks. We'll provide a detailed timeline during our initial consultation.</p>
+                        
+                        <h4>Do you work with businesses of all sizes?</h4>
+                        <p>Yes, we work with startups, small businesses, and established companies. Our approach is tailored to your specific needs, goals, and budget regardless of your company size.</p>
+                    </div>
+                    <div class="animate-on-scroll">
+                        <h4>What's included in the initial consultation?</h4>
+                        <p>Our free consultation includes a thorough discussion of your goals, current challenges, target audience, and vision. We'll also provide initial insights and recommendations for your brand strategy.</p>
+                        
+                        <h4>How do you ensure projects stay on budget?</h4>
+                        <p>We provide detailed proposals with clear scope and pricing upfront. Any changes or additions are discussed and approved before implementation to ensure transparency and budget control.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="main-footer">
         <div class="container footer-content">
-            <p>&copy; 2024 White Echo Collective. All Rights Reserved.</p>
+            <p>&copy; 2025 White Echo Collective. All Rights Reserved.</p>
+            <div class="footer-contact">
+                <span>Email: <a href="mailto:brandonleewilliams22@gmail.com">brandonleewilliams22@gmail.com</a></span>
+                <span>Phone: <a href="tel:+27621921348">+27 62 192 1348</a></span>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/your-instagram-username" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/instagram-icon.svg" alt="Instagram">
+                </a>
+            </div>
         </div>
     </footer>
+
+    <a href="#" id="back-to-top" title="Go to top">↑</a>
 
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+<style>
+/* Contact Form Styles */
+.contact-form {
+    max-width: 100%;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dirty-gold);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: rgba(61, 61, 61, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    color: var(--cream);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--dirty-gold);
+    background: rgba(61, 61, 61, 0.8);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-info-card {
+    background: linear-gradient(145deg, var(--charcoal-light), var(--charcoal));
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px var(--shadow-dark);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    height: fit-content;
+}
+
+.contact-method {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.contact-method:last-of-type {
+    border-bottom: none;
+    margin-bottom: 2.5rem;
+}
+
+.contact-method h4 {
+    color: var(--dirty-gold);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.contact-method p {
+    margin-bottom: 0;
+    color: var(--cream);
+}
+
+.contact-method a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+    color: var(--dirty-gold);
+}
+</style>

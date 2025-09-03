@@ -1,37 +1,39 @@
-// Enhanced smooth scrolling with stripe transitions
+// Adobe-quality smooth transitions and interactions
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Create stripe transition element
-    const stripeTransition = document.createElement('div');
-    stripeTransition.className = 'stripe-transition';
-    document.body.appendChild(stripeTransition);
+    // Create smooth page transition element
+    const pageTransition = document.createElement('div');
+    pageTransition.className = 'page-transition';
+    document.body.appendChild(pageTransition);
 
-    // Stripe transition function
-    function triggerStripeTransition(callback) {
-        stripeTransition.classList.add('active');
+    // Smooth page transition function
+    function triggerPageTransition(callback) {
+        pageTransition.classList.add('active');
         setTimeout(() => {
             if (callback) callback();
             setTimeout(() => {
-                stripeTransition.classList.remove('active');
-            }, 400);
+                pageTransition.classList.remove('active');
+            }, 600);
         }, 400);
     }
 
-    // Smooth scroll animation observer
+    // Enhanced scroll animation observer
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
+                setTimeout(() => {
+                    entry.target.classList.add('animated');
+                }, index * 100);
             }
         });
     }, observerOptions);
 
-    // Observe all animate-on-scroll elements
+    // Observe all animate elements
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
     });
@@ -41,21 +43,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
 
-    // Navigation with stripe transitions
+    // Smooth navigation with transitions
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             
-            // Only apply stripe transition for internal links
+            // Apply transition for internal navigation
             if (href.startsWith('#') || href.includes('.html')) {
                 e.preventDefault();
                 
-                triggerStripeTransition(() => {
+                triggerPageTransition(() => {
                     if (href.startsWith('#')) {
                         const target = document.querySelector(href);
                         if (target) {
@@ -71,71 +75,74 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Close mobile menu
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (hamburger) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         });
     });
 
-    // Enhanced back to top button
-    const backToTopButton = document.getElementById('back-to-top');
+    // Enhanced scroll effects
+    let ticking = false;
     
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
+    function updateScrollEffects() {
+        const scrolled = window.pageYOffset;
+        const header = document.querySelector('.main-header');
+        const backToTop = document.getElementById('back-to-top');
+        
+        // Header scroll effect
+        if (header) {
+            if (scrolled > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
         
-        // Add scrolled class to header
-        const header = document.querySelector('.main-header');
-        if (window.pageYOffset > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        // Back to top button
+        if (backToTop) {
+            if (scrolled > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+        
+        // Parallax effect for hero
+        const hero = document.querySelector('.hero');
+        if (hero && scrolled < window.innerHeight) {
+            const rate = scrolled * 0.3;
+            hero.style.transform = `translateY(${rate}px)`;
+        }
+        
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollEffects);
+            ticking = true;
         }
     });
 
-    backToTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        triggerStripeTransition(() => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    // Back to top functionality
+    const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            triggerPageTransition(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
-    });
-
-    // Urban art gallery functionality
-    function createUrbanArtPlaceholders() {
-        const gallery = document.querySelector('.urban-gallery');
-        if (!gallery) return;
-
-        const placeholders = [
-            'Street Art Mural',
-            'Graffiti Design', 
-            'Urban Photography',
-            'City Landscape',
-            'Industrial Art',
-            'Modern Street Scene'
-        ];
-
-        placeholders.forEach(title => {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'urban-art-placeholder animate-on-scroll gold-shine';
-            placeholder.innerHTML = `
-                <div style="text-align: center;">
-                    <p style="margin: 0; font-size: 0.9rem;">${title}</p>
-                </div>
-            `;
-            gallery.appendChild(placeholder);
-            observer.observe(placeholder);
         });
     }
 
     // Enhanced button interactions
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
+            this.style.transform = 'translateY(-2px)';
         });
         
         btn.addEventListener('mouseleave', function() {
@@ -143,61 +150,116 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Service card enhanced interactions
-    document.querySelectorAll('.service-card').forEach(card => {
+    // Card hover effects
+    document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mouseenter', function() {
-            const icon = this.querySelector('.service-icon');
+            const icon = this.querySelector('.card-icon');
             if (icon) {
                 icon.style.transform = 'scale(1.1)';
             }
         });
         
         card.addEventListener('mouseleave', function() {
-            const icon = this.querySelector('.service-icon');
+            const icon = this.querySelector('.card-icon');
             if (icon) {
                 icon.style.transform = 'scale(1)';
             }
         });
     });
 
-    // Gold shine effect for elements
-    document.querySelectorAll('.gold-shine').forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            const shine = this.querySelector('::before');
-            if (shine) {
-                shine.style.left = '100%';
+    // Image container effects
+    document.querySelectorAll('.image-container').forEach(container => {
+        container.addEventListener('mouseenter', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1.05)';
+            }
+        });
+        
+        container.addEventListener('mouseleave', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1)';
             }
         });
     });
 
-    // Initialize urban art gallery
-    createUrbanArtPlaceholders();
+    // Gold texture shine effect
+    document.querySelectorAll('.gold-texture').forEach(element => {
+        let shineTimeout;
+        
+        element.addEventListener('mouseenter', function() {
+            clearTimeout(shineTimeout);
+            const after = window.getComputedStyle(this, '::after');
+            this.style.setProperty('--shine-left', '100%');
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            shineTimeout = setTimeout(() => {
+                this.style.setProperty('--shine-left', '-100%');
+            }, 200);
+        });
+    });
 
-    // Smooth page load animation
+    // Smooth page load
     window.addEventListener('load', () => {
         document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.transition = 'opacity 0.6s ease';
         
         setTimeout(() => {
             document.body.style.opacity = '1';
-        }, 50);
+        }, 100);
     });
 
-    // Enhanced scroll animations with stagger
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    animatedElements.forEach((element, index) => {
-        element.style.transitionDelay = `${index * 0.1}s`;
-    });
-
-    // Page transition for external links
-    document.querySelectorAll('a[href$=".html"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            
-            triggerStripeTransition(() => {
-                window.location.href = href;
-            });
+    // Enhanced form interactions (for contact page)
+    document.querySelectorAll('input, textarea, select').forEach(field => {
+        field.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        field.addEventListener('blur', function() {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
         });
     });
+
+    // Stagger animations for grids
+    document.querySelectorAll('.grid-3 > *, .grid-4 > *').forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
+    });
+
+    // Smooth external link transitions
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+        if (!link.hasAttribute('target')) {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                
+                triggerPageTransition(() => {
+                    window.open(href, '_blank');
+                });
+            });
+        }
+    });
+
+    // Initialize lazy loading for images
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
 });
