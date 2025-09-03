@@ -666,6 +666,11 @@ body:has([href="index.html"].nav-link.active) .hero h1,
         padding: 0 1.5rem;
     }
 
+    .nav-logo img {
+        height: 70px;
+        width: 70px;
+    }
+
     .grid-2 {
         grid-template-columns: 1fr;
         gap: 3rem;
